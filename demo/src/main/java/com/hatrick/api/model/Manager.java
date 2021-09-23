@@ -1,14 +1,24 @@
 package com.hatrick.api.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "manager")
 public class Manager extends AbstractEntity {
+
+    @NotEmpty(message = "Password is not empty!")
     protected String password;
+    @NotEmpty(message = "Name is not empty!")
     private String name;
+    @NotEmpty(message = "E-mail is not empty!")
+    @Email
     private String email;
+    @NotEmpty(message = "UserName is not empty!")
+    @Column(unique = true)
     private String username;
 
 
@@ -20,10 +30,6 @@ public class Manager extends AbstractEntity {
     }
 
     public Manager() {
-    }
-
-    public Manager(String name) {
-        this.name = name;
     }
 
     public String getName() {
@@ -57,6 +63,4 @@ public class Manager extends AbstractEntity {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
 }

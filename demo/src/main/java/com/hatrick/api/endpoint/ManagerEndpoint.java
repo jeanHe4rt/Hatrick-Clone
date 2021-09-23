@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
@@ -36,8 +37,13 @@ public class ManagerEndpoint {
         return new ResponseEntity<>( manager,HttpStatus.OK);
     }
 
+    @GetMapping(path = "/findByName/{name}")
+    public ResponseEntity findManagerByName(@PathVariable String name){
+        return new ResponseEntity<>(managerDAO.findByNameContainingIgnoreCase(name),HttpStatus.OK);
+    }
+
     @PostMapping(path = "/")
-    public ResponseEntity<?> save( @RequestBody Manager manager) {
+    public ResponseEntity<?> save( @Valid @RequestBody Manager manager) {
         return new ResponseEntity<>(managerDAO.save(manager),HttpStatus.CREATED);
     }
     @DeleteMapping(path ="/list/{id}" )
