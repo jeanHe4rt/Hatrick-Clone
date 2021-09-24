@@ -4,6 +4,7 @@ import com.hatrick.api.model.utilGame.Contusao;
 import com.hatrick.api.model.utilGame.Cartao;
 import com.hatrick.api.model.utilGame.Habilidade;
 
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -26,10 +27,10 @@ public class Player extends AbstractCharacter {
     private Habilidade habilidade;
     private String posicao;
 
+
     public Player(Long id, String type, String name, int age, int tsi,
                   String nacionalidade, double salario, int forma, int resistencia,
-                  String[] personalidade, String especialidade, Habilidade habilidade,
-                  String posicao
+                  String[] personalidade, String especialidade, String posicao
     ) {
         super(id, type);
         this.name = name;
