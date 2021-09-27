@@ -14,11 +14,11 @@ public class Manager extends AbstractEntity {
     protected String password;
     @NotEmpty(message = "Name is not empty!")
     private String name;
-    @NotEmpty(message = "E-mail is not empty!")
     @Email
+    @NotEmpty(message = "E-mail is not empty!")
     private String email;
+
     @NotEmpty(message = "UserName is not empty!")
-    @Column(unique = true)
     private String username;
 
 

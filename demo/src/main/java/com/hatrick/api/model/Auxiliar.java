@@ -2,11 +2,7 @@ package com.hatrick.api.model;
 
 import com.hatrick.api.util.DateUtil;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "treinador")
 public class Auxiliar extends AbstractCharacter {
 
     private String name;

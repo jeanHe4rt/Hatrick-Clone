@@ -1,17 +1,12 @@
 package com.hatrick.api.model;
 
-import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "partida")
+
 public class Partida extends AbstractCharacter{
 
-    @OneToOne
-    @JoinColumn(name = "time_1_id")
+
     private Time time1;
-    @OneToOne
-    @JoinColumn(name = "time_2_id")
     private Time time2;
     private List<Time> titularesTime1;
     private List<Time> titularesTime2;

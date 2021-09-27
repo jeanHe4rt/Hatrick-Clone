@@ -1,12 +1,13 @@
 package com.hatrick.api.endpoint;
 
-import com.hatrick.api.error.CustomErrorType;
+import com.hatrick.api.error.ResourceNotFoundException;
 import com.hatrick.api.model.Manager;
 import com.hatrick.api.repository.ManagerRepository;
 import com.hatrick.api.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -43,6 +44,9 @@ public class ManagerEndpoint {
     }
 
     @PostMapping(path = "/")
+    @Transactional
+    // Se tiver alguma dado do tipo checked
+    // precisamos explicitar  no transitions para dar o rollback
     public ResponseEntity<?> save( @Valid @RequestBody Manager manager) {
         return new ResponseEntity<>(managerDAO.save(manager),HttpStatus.CREATED);
     }
@@ -60,12 +64,9 @@ public class ManagerEndpoint {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    private boolean verifyIfExistsManager(Long id){
-        boolean manager = managerDAO.existsById(id);
-        if(manager == false) {
-             new ResponseEntity<>( new CustomErrorType("User is not found!"), HttpStatus.NOT_FOUND);
-            return false;
+    private void verifyIfExistsManager(Long id){
+        if(!managerDAO.findById(id).isPresent()) {
+             throw new ResourceNotFoundException("Manager not found for id "+ id);
         }
-        return true;
     }
 }

@@ -2,7 +2,10 @@ package com.hatrick.api.model.utilGame;
 
 import org.springframework.stereotype.Component;
 
-@Component
+import javax.persistence.Table;
+
+
+
 public class Habilidade {
     private String typePlayer;
     private int armacao;

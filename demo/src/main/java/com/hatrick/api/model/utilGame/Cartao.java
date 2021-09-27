@@ -1,9 +1,9 @@
 package com.hatrick.api.model.utilGame;
 
-import org.springframework.stereotype.Component;
+import com.hatrick.api.model.Player;
 
-@Component
 public class Cartao {
+    private Player player;
     private int yellow;
     private int red;
 

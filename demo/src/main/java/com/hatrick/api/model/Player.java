@@ -1,16 +1,11 @@
 package com.hatrick.api.model;
 
-import com.hatrick.api.model.utilGame.Contusao;
 import com.hatrick.api.model.utilGame.Cartao;
+import com.hatrick.api.model.utilGame.Contusao;
 import com.hatrick.api.model.utilGame.Habilidade;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
-
-@Entity
-@Table(name = "player")
 public class Player extends AbstractCharacter {
 
     private String name;

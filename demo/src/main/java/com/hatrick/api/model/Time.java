@@ -1,19 +1,11 @@
 package com.hatrick.api.model;
 
 
-
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import java.util.List;
 
-@Entity
-@Table(name = "time")
 public class Time extends AbstractEntity {
 
-    @OneToOne
-    @JoinColumn(name = "manager_id")
+
     private  Manager manager;
     private int vitoria;
     private int derrota;

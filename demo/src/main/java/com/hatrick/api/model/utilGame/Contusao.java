@@ -4,7 +4,9 @@ import com.hatrick.api.util.DateUtil;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Component
+import javax.persistence.Table;
+
+
 public class Contusao {
     private double tempoMachudado;
     private DateUtil dataDoMachucado;
